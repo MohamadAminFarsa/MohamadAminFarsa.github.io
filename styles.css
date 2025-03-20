@@ -1,0 +1,447 @@
+/* Reset */
+body, html, ul, li, a {
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  list-style: none;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #232323;
+  color: #333;
+}
+
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 20px;
+  background-color: rgb(90, 143, 143);
+  color: white;
+  height: 50px;
+}
+
+header .logo {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+header nav ul {
+  display: flex;
+  gap: 8px;
+}
+
+header nav ul li a {
+  color: white;
+  font-weight: bold;
+  font-size: 12px;
+}
+
+header .profile {
+  width: 22px;
+  height: 22px;
+  background-color: white;
+  color: #2196f3;
+  font-weight: bold;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+}
+
+main {
+  padding: 10px;
+}
+
+/* تنظیم نمایش ۴ کارت در هر ردیف با فاصله زیادتر */
+.card-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 30px; /* افزایش فاصله بین کارت‌ها */
+  margin: 20px auto;
+  max-width: 90%;
+  padding: 20px;
+}
+
+.card {
+  background: white;
+  border: 1px solid #ff0000;
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  position: relative;
+  width: 100%;
+  max-width: 120px; /* کاهش اندازه کارت */
+  padding: 4px;
+}
+
+.card img {
+  width: 100%;
+  height: 70px;
+  object-fit: cover;
+}
+
+.card h3 {
+  margin: 4px;
+  font-size: 10px;
+}
+
+.card p {
+  margin: 4px;
+  color: #777;
+  font-size: 9px;
+}
+
+.card .actions {
+  display: flex;
+  justify-content: space-between;
+  padding: 4px;
+}
+
+.card .actions a {
+  color: #2196f3;
+  font-weight: bold;
+  font-size: 9px;
+}
+
+/* دکمه لایک */
+.like-btn {
+  background-color: #f1f1f1;
+  border: 1px solid #ccc;
+  padding: 2px 5px;
+  cursor: pointer;
+  font-size: 9px;
+  border-radius: 3px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.like-btn:hover {
+  background-color: #2196f3;
+  color: white;
+  transform: scale(1.05);
+}
+
+.like-btn.liked {
+  background-color: #ff0202;
+  color: white;
+  font-weight: bold;
+}
+
+/* افکت هاور روی کارت */
+.card:hover {
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* حفظ ۴ کارت در هر ردیف در موبایل */
+@media (max-width: 480px) {
+  .card-container {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px; /* افزایش فاصله بین کارت‌ها در موبایل */
+  }
+}
+
+footer {
+  background-color: rgb(90, 143, 143);
+  color: #fff;
+  text-align: center;
+  padding: 8px;
+  position: relative;
+  bottom: 0;
+  width: 100%;
+  box-shadow: 0 -3px 5px rgba(0, 0, 0, 0.1);
+  font-size: 10px;
+}
+
+footer a {
+  color: #fcff5f;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 10px;
+}
+
+footer a:hover {
+  text-decoration: underline;
+  color: #fff;
+}
+
+/* افکت‌های لود شدن صفحه */
+body {
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+
+body.loaded {
+  opacity: 1;
+}
+
+.card {
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.card.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
+
+/* دکمه لایک */
+.like-btn {
+  background-color: #f1f1f1;
+  border: 1px solid #ccc;
+  padding: 4px 10px; /* فضای داخلی دکمه */
+  cursor: pointer;
+  font-size: 9px;
+  border-radius: 4px; /* اضافه کردن گوشه‌های گرد به دکمه */
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.like-btn:hover {
+  background-color: #2196f3;
+  color: white;
+  transform: scale(1.05);
+}
+
+.like-btn.liked {
+  background-color: #ff0202;
+  color: white;
+  font-weight: bold;
+}
+
+/* تنظیمات برای موبایل */
+@media (max-width: 480px) {
+  .like-btn {
+    font-size: 7px; /* کاهش اندازه فونت دکمه در موبایل */
+    padding: 2px 6px; /* کاهش فضای داخلی دکمه */
+    border-radius: 4px; /* گوشه‌های گرد در موبایل هم حفظ شود */
+  }
+}
+
+
+
+
+.card img {
+  width: 100%;  /* عرض تصویر به اندازه عرض کارت */
+  height: auto; /* ارتفاع تصویر به طور خودکار متناسب با عرض */
+  object-fit: contain; /* مطمئن می‌شود که تصویر کاملاً درون کارت جا می‌گیرد و هیچ‌چیز بریده نمی‌شود */
+}
+
+
+
+
+
+
+
+
+
+.card {
+  background: white;
+  border: 1px solid #ff0000;
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  position: relative; /* مهم برای قرار دادن دکمه‌ها در پایین کارت */
+  width: 100%;
+  max-width: 120px;
+  padding: 4px;
+  display: flex;
+  flex-direction: column; /* قرار دادن دکمه‌ها در پایین */
+}
+
+.card img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+.card h3 {
+  margin: 4px;
+  font-size: 10px;
+}
+
+.card p {
+  margin: 4px;
+  color: #777;
+  font-size: 9px;
+}
+
+.card .actions {
+  display: flex;
+  justify-content: space-between;
+  padding: 4px;
+  margin-top: auto; /* دکمه‌ها را به پایین کارت می‌بریم */
+}
+
+.card .actions a {
+  color: #2196f3;
+  font-weight: bold;
+  font-size: 9px;
+}
+
+/* دکمه لایک */
+.like-btn {
+  background-color: #f1f1f1;
+  border: 1px solid #ccc;
+  padding: 4px 10px;
+  cursor: pointer;
+  font-size: 9px;
+  border-radius: 4px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.like-btn:hover {
+  background-color: #2196f3;
+  color: white;
+  transform: scale(1.05);
+}
+
+.like-btn.liked {
+  background-color: #ff0202;
+  color: white;
+  font-weight: bold;
+}
+
+/* تنظیمات برای موبایل */
+@media (max-width: 480px) {
+  .like-btn {
+    font-size: 7px;
+    padding: 2px 6px;
+    border-radius: 4px;
+  }
+
+  .card .actions {
+    gap: 5px;
+    flex-direction: column; /* نمایش دکمه‌ها به صورت عمودی در موبایل */
+  }
+
+  .card .actions a {
+    font-size: 8px;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.card {
+  background: white;
+  border: 1px solid #ff0000;
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1);
+  transition: transform 0.5s ease, box-shadow 0.5s ease, opacity 0.5s ease; /* مدت زمان انیمیشن طولانی‌تر شده */
+  position: relative;
+  width: 100%;
+  max-width: 120px;
+  padding: 4px;
+  display: flex;
+  flex-direction: column;
+  opacity: 0; /* کارت‌ها در ابتدا مخفی هستند */
+  transform: translateY(10px); /* کارت‌ها کمی پایین‌تر نمایش داده می‌شوند */
+}
+
+.card.show {
+  opacity: 1;
+  transform: translateY(0); /* کارت به موقعیت اصلی خود می‌آید */
+}
+
+/* انیمیشن عمومی */
+.card img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+.card h3 {
+  margin: 4px;
+  font-size: 10px;
+}
+
+.card p {
+  margin: 4px;
+  color: #777;
+  font-size: 9px;
+}
+
+.card .actions {
+  display: flex;
+  justify-content: space-between;
+  padding: 4px;
+  margin-top: auto;
+}
+
+.card .actions a {
+  color: #2196f3;
+  font-weight: bold;
+  font-size: 9px;
+}
+
+/* دکمه لایک */
+.like-btn {
+  background-color: #f1f1f1;
+  border: 1px solid #ccc;
+  padding: 4px 10px;
+  cursor: pointer;
+  font-size: 9px;
+  border-radius: 4px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.like-btn:hover {
+  background-color: #2196f3;
+  color: white;
+  transform: scale(1.05);
+}
+
+.like-btn.liked {
+  background-color: #ff0202;
+  color: white;
+  font-weight: bold;
+}
+
+/* تنظیمات برای موبایل */
+@media (max-width: 480px) {
+  .card {
+    max-width: 100%;
+    height: auto;
+  }
+
+  .card .actions {
+    gap: 5px;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px 0;
+  }
+
+  .card .actions a {
+    font-size: 8px;
+    padding: 4px 8px;
+  }
+
+  .like-btn {
+    font-size: 7px;
+    padding: 2px 6px;
+    border-radius: 4px;
+  }
+}

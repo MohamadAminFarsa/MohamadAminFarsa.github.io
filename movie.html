@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Movie Details</title>
+  <link rel="stylesheet" href="movie.css">
+</head>
+<body>
+  <header>
+    <div class="logo"><a href="index.html">Filimo</a></div>
+  </header>
+  
+  <main class="movie-container">
+    <h1 id="movie-title"></h1>
+    <p id="movie-subtitle"></p>
+    <img id="movie-image" src="" alt="Movie Poster">
+    
+    <div class="video-container">
+      <video id="movie-video" controls>
+        <source src="" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+    </div>
+
+    <a href="index.html" class="back-btn">Back to Home</a>
+  </main>
+
+  <script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const movieIndex = urlParams.get('index');
+
+    const movies = [
+      { title: "گردن زنی", subtitle: "THE BEHEADING", img: "image1.jpg", video: "video1.mp4" },
+      { title: "دو روز دیرتر", subtitle: "DO ROZ DIRTAR", img: "image2.jpg", video: "video2.mp4" },
+      { title: "مردگان متحرک", subtitle: "THE WALKING DEAD", img: "image3.jpg", video: "video3.mp4" },
+      { title: "زخم کاری", subtitle: "ZAKHM KARI", img: "image4.jpg", video: "video4.mp4" },
+      { title: "تگزاس 3", subtitle: "TEXAS 3", img: "image5.jpg", video: "video5.mp4" },
+      { title: "داریوش", subtitle: "DARIOUSH", img: "image6.jpg", video: "video6.mp4" },
+      { title: "در انتهای شب", subtitle: "DAR ENTEHAI SHAB", img: "image7.jpg", video: "video7.mp4" },
+      { title: "قطب شمال", subtitle: "GHOTB SHOMAL", img: "image8.jpg", video: "video8.mp4" },
+      { title: "دنیای جدید", subtitle: "NEW WORLD", img: "image9.jpg", video: "video9.mp4" },
+      { title: "آخرین شانس", subtitle: "THE LAST CHANCE", img: "image10.jpg", video: "video10.mp4" },
+      { title: "شهر گمشده", subtitle: "THE LOST CITY", img: "image11.jpg", video: "video11.mp4" },
+      { title: "شجاع دل", subtitle: "BRAVEHEART", img: "image12.jpg", video: "video12.mp4" },
+      { title: "آینه‌ی قدیمی", subtitle: "THE MIRROR", img: "image13.jpg", video: "video13.mp4" }
+    ];
+
+    if (movieIndex !== null && movies[movieIndex]) {
+      document.getElementById("movie-title").innerText = movies[movieIndex].title;
+      document.getElementById("movie-subtitle").innerText = movies[movieIndex].subtitle;
+      document.getElementById("movie-image").src = movies[movieIndex].img;
+      document.getElementById("movie-video").src = movies[movieIndex].video;
+    }
+  </script>
+</body>
+</html>

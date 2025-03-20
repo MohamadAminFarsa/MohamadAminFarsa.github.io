@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Filimo</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" href="./fav-icon.png" type="image/png">
+</head>
+<body>
+  <header>
+    <div class="logo">Filimo</div>
+    <nav>
+      <ul>
+        <li><a href="#">HOME</a></li>
+        <li><a href="#">BLOG</a></li>
+        <li><a href="#">SUPPORT</a></li>
+        <li><a href="#">ABOUT</a></li>
+      </ul>
+    </nav>
+    <div class="profile">F</div>
+  </header>
+  <main>
+    <div class="card-container">
+      <!-- کارت‌های پویا -->
+    </div>
+  </main>
+  <footer>
+    <p>© 2024 Filimo. All rights reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+  </footer>
+  <script>
+    const movies = [
+      { title: "گردن زنی", subtitle: "THE BEHEADING", img: "image1.jpg", video: "video1.mp4" },
+      { title: "دو روز دیرتر", subtitle: "DO ROZ DIRTAR", img: "image2.jpg", video: "video2.mp4" },
+      { title: "مردگان متحرک", subtitle: "THE WALKING DEAD", img: "image3.jpg", video: "video3.mp4" },
+      { title: "زخم کاری", subtitle: "ZAKHM KARI", img: "image4.jpg", video: "video4.mp4" },
+      { title: "تگزاس 3", subtitle: "TEXAS 3", img: "image5.jpg", video: "video5.mp4" },
+      { title: "داریوش", subtitle: "DARIOUSH", img: "image6.jpg", video: "video6.mp4" },
+      { title: "در انتهای شب", subtitle: "DAR ENTEHAI SHAB", img: "image7.jpg", video: "video7.mp4" },
+      { title: "قطب شمال", subtitle: "GHOTB SHOMAL", img: "image8.jpg", video: "video8.mp4" },
+      { title: "دنیای جدید", subtitle: "NEW WORLD", img: "image9.jpg", video: "video9.mp4" },
+      { title: "آخرین شانس", subtitle: "THE LAST CHANCE", img: "image10.jpg", video: "video10.mp4" },
+      { title: "شهر گمشده", subtitle: "THE LOST CITY", img: "image11.jpg", video: "video11.mp4" },
+      { title: "شجاع دل", subtitle: "BRAVEHEART", img: "image12.jpg", video: "video12.mp4" },
+      { title: "آینه‌ی قدیمی", subtitle: "THE MIRROR", img: "image13.jpg", video: "video13.mp4" }
+    ];
+
+    const container = document.querySelector('.card-container');
+
+    movies.forEach((movie, index) => {
+      const card = document.createElement('div');
+      card.classList.add('card');
+      card.innerHTML = `
+        <img src="${movie.img}" alt="${movie.title}">
+        <h3>${movie.title}</h3>
+        <p>${movie.subtitle}</p>
+        <div class="actions">
+          <button class="like-btn">Like ❤️</button>
+          <a href="movie.html?index=${index}" target="_blank">More Info</a>
+        </div>
+      `;
+      container.appendChild(card);
+    });
+
+    container.addEventListener('click', event => {
+      if (event.target.classList.contains('like-btn')) {
+        event.target.classList.toggle('liked');
+        event.target.innerText = event.target.classList.contains('liked') ? 'Liked 💖' : 'Like ❤️';
+      }
+    });
+  
+
+
+
+    // انیمیشن اسکرول به بالا در هنگام کلیک روی لوگو
+    document.querySelector('.logo').addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    // افکت hover پیشرفته برای کارت‌ها
+    container.addEventListener('mouseover', event => {
+      if (event.target.closest('.card')) {
+        event.target.closest('.card').style.transform = 'scale(1.1)';
+        event.target.closest('.card').style.transition = 'transform 0.3s ease';
+      }
+    });
+
+    container.addEventListener('mouseout', event => {
+      if (event.target.closest('.card')) {
+        event.target.closest('.card').style.transform = 'scale(1)';
+      }
+    });
+    
+
+
+
+    // گرفتن تمام کارت‌ها
+const cards = document.querySelectorAll(".card");
+
+cards.forEach((card) => {
+  card.addEventListener("mousemove", (e) => {
+    const rect = card.getBoundingClientRect();
+    const x = e.clientX - rect.left; // موقعیت X موس
+    const y = e.clientY - rect.top;  // موقعیت Y موس
+
+    // محاسبه زاویه برای چرخش
+    const rotateX = ((y / rect.height) - 0.5) * 20;
+    const rotateY = ((x / rect.width) - 0.5) * -20;
+
+    // اعمال افکت چرخش
+    card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+  });
+
+  card.addEventListener("mouseleave", () => {
+    // بازگشت کارت به حالت اولیه
+    card.style.transform = "perspective(1000px) rotateX(0) rotateY(0)";
+  });
+
+
+
+// وقتی صفحه کاملاً بارگذاری شد
+window.addEventListener('load', () => {
+  // اضافه کردن کلاس برای انیمیشن لودینگ
+  document.body.classList.add('loaded');
+  
+  // انیمیشن برای کارت‌ها
+  const cards = document.querySelectorAll('.card');
+  cards.forEach((card, index) => {
+    setTimeout(() => {
+      card.classList.add('show');
+    }, index * 200); // انیمیشن کارت‌ها با تاخیر
+  });
+});
+});
+
+
+  </script>
+</body>
+</html>
